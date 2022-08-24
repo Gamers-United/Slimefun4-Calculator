@@ -1,0 +1,2 @@
+gameRecipes = {}
+gameIngredients = {}
