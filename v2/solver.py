@@ -10,7 +10,6 @@ class Solver:
         self.currentTier = 0
 
     def addSolvable(self, ingredientSolvable, qty: int):
-        print(f"Solving for {qty} of {ingredientSolvable.name}")
         for item in range(0, qty):
             self.solvables.append(ingredientSolvable)
 
@@ -24,7 +23,6 @@ class Solver:
         return state
 
     def solve(self):
-        # Inject the first set of solvables if this is the first attempt at solving.
         self.craftableTiersHolder[0] = []
         self.craftableTiersHolder[0].extend(self.solvables)
         worktodo = True
@@ -40,21 +38,19 @@ class Solver:
                     self.craftablePrintHolder[self.currentTier][item.name] = float(item.qty)
             worktodo = self.checkFurtherSolvable()
             self.currentTier += 1
-    
+
     def printResult(self):
         highest = self.currentTier
         for i in range(0, highest):
+            print(f"----{i}----")
             try:
-                print(f"Ingredients required by tier: {self.ingredientTiersHolder[i]}")
+                print(f"Ingredients required by layer: {self.ingredientTiersHolder[i]}")
             except KeyError as e:
-                print(f"No Ingredients for tier {i}")
+                print(f"No Ingredients for layer {i}")
             try:
-                print(f"Crafts occuring in tier: ")
-                for key in self.craftablePrintHolder[i]:
-                    print(f"{key}:{self.craftablePrintHolder[i][key]}, ", end="")
-                print("\n")
+                print(f"Crafts occuring in layer: {self.craftablePrintHolder[i]}")
             except KeyError as e:
-                print(f"No Crafts for tier {i}")
+                print(f"No Crafts for layer {i}")
 
     def importUI(self, ui):
         data = []
@@ -64,13 +60,12 @@ class Solver:
                 index = ui.craftablesTable.model().index(row, column)
                 data[row].append(str(ui.craftablesTable.model().data(index)))
         for row in data:
-            #try:
+            try:
                 name = row[0]
                 iStack = gameIngredients[name]
                 self.addSolvable(iStack, int(row[1]))
-            #except Exception as e:
-                #print(e)
-                #print("Ingredient was not valid")
+            except Exception as e:
+                print("Ingredient in table was null or not valid.")
         self.solve()
         self.printResult()
 

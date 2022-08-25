@@ -1,11 +1,10 @@
-import sys
-from ui import Ui_MainWindow
-from PyQt6 import QtCore, QtGui, QtWidgets
+import sys, ui
+from PyQt6 import QtWidgets
 
 app = QtWidgets.QApplication(sys.argv)
 window = QtWidgets.QMainWindow()
 window.show()
-ui = Ui_MainWindow()
-ui.setupUi(window)
+a = ui.Ui_MainWindow()
+a.setupUi(window)
+a.connectSlots()
 app.exec()
-

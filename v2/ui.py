@@ -76,9 +76,13 @@ class Ui_MainWindow(object):
         self.AddButton.setText(_translate("MainWindow", "Add"))
 
     def connectSlots(self):
-        self.AddButton.clicked.connect(lambda x: self.craftablesTable.insertRow(self.craftablesTable.currentRow()+1))
+        self.AddButton.clicked.connect(lambda x: self.insertButtonHandler())
         self.removeButton.clicked.connect(lambda x: self.craftablesTable.removeRow(self.craftablesTable.currentRow()))
         self.solveButton.clicked.connect(lambda x: Solver().importUI(self))
+
+    def insertButtonHandler(self):
+        self.craftablesTable.insertRow(self.craftablesTable.currentRow()+1)
+        self.craftablesTable.setItem(self.craftablesTable.currentRow()+1, 1, QtWidgets.QTableWidgetItem("1"))
 
 if __name__ == "__main__":
     import sys
