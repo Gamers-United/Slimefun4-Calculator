@@ -61,7 +61,7 @@ rclick = 'minecraft:use'
 furn = 'minecraft:furnace'
 crft = 'minecraft:crafting_table'
 ecrft = 'slimefun4:enhanced_crafting_table'
-compr = 'slimefun4:compressor'
+cmprs = 'slimefun4:compressor'
 pcr = 'slimefun4:pressure_chamber'
 hpcr = "slimefun4:heated_pressure_chamber"
 smlt = 'slimefun4:smeltery'
@@ -110,8 +110,8 @@ sulfate = Ingredient("slimefun4:sulfate").addRecipe([magma_block], 1, crsh)
 salt = Ingredient("slimefun4:salt").addRecipe([sand], 1, wash)
 
 # Slimefun 4 Carbon Recipes
-carbon = Ingredient("slimefun4:carbon").addRecipe([coal.getQty(8)], 1, compr)
-compressedCarbon = Ingredient("slimefun4:compressedCarbon").addRecipe([carbon.getQty(4)], 1, compr)
+carbon = Ingredient("slimefun4:carbon").addRecipe([coal.getQty(8)], 1, cmprs)
+compressedCarbon = Ingredient("slimefun4:compressedCarbon").addRecipe([carbon.getQty(4)], 1, cmprs)
 carbon_chunk = Ingredient("slimefun4:carbon_chunk").addShapedRecipe([compressedCarbon.getQty(8),flint], 1, [[compressedCarbon, compressedCarbon, compressedCarbon], [compressedCarbon, flint, compressedCarbon], [compressedCarbon, compressedCarbon, compressedCarbon]], ecrft)
 synthetic_diamond = Ingredient("slimefun4:synthetic_diamond").addRecipe([carbon_chunk], 1, pcr)
 raw_carbonado = Ingredient("slimefun4:raw_carbonado").addRecipe([synthetic_diamond,carbon_chunk, glassPane], 1, pcr)
@@ -130,12 +130,12 @@ corinthianBronzeIngot = Ingredient("slimefun4:corinthian_bronze_ingot").addRecip
 aluminumBronzeIngot = Ingredient("slimefun4:aluminum_bronze_ingot").addRecipe([bronzeIngot, aluminumIngot, aluminumDust], 1, smlt)
 duraluminIngot = Ingredient("slimefun4:duralumin_ingot").addRecipe([aluminumIngot, aluminumDust, copperDust], 1, smlt)
 steelIngot = Ingredient("slimefun4:steel_ingot").addRecipe([ironIngot, ironDust, carbon], 1, smlt)
-steelPlate = Ingredient("slimefun4:steel_plate").addRecipe([steelIngot.getQty(8)], 1, compr)
+steelPlate = Ingredient("slimefun4:steel_plate").addRecipe([steelIngot.getQty(8)], 1, cmprs)
 damascusSteelIngot = Ingredient("slimefun4:damascus_steel_ingot").addRecipe([steelIngot, ironIngot, ironDust, carbon], 1, smlt)
 hardenedMetal = Ingredient("slimefun4:hardened_metal_ingot").addRecipe([compressedCarbon, duraluminIngot, damascusSteelIngot, aluminumBronzeIngot], 1, smlt)
 reinforcedAlloyIngot = Ingredient("slimefun4:reinforced_alloy_ingot").addRecipe([damascusSteelIngot, hardenedMetal, corinthianBronzeIngot, solderIngot, billonIngot, gold24k], 1, smlt)
 redstoneAlloyIngot = Ingredient("slimefun4:redstone_alloy").addRecipe([hardenedMetal, ferrosilicon, redstoneBlock, redstone], 1, smlt)
-reinforcedPlate = Ingredient("slimefun4:reinforced_plate").addRecipe([reinforcedAlloyIngot.getQty(8)], 1, compr)
+reinforcedPlate = Ingredient("slimefun4:reinforced_plate").addRecipe([reinforcedAlloyIngot.getQty(8)], 1, cmprs)
 magnesiumSalt = Ingredient("slimefun4:magnesium_salt").addRecipe([magnesium, salt], 1, hpcr)
 
 # Slimefun 4 Technical Components
