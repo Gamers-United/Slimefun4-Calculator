@@ -2,48 +2,48 @@ from ingredient import Ingredient
 from recipe import Recipe
 
 # Base Ingredients (Minecraft)
-flint = Ingredient("flint", "minecraft", True)
-gravel = Ingredient("gravel", "minecraft", True)
-sand = Ingredient("sand", "minecraft", True)
+flint = Ingredient("minecraft:flint", True)
+gravel = Ingredient("minecraft:gravel", True)
+sand = Ingredient("minecraft:sand", True)
 
-redstone = Ingredient("redstone", "minecraft", True)
-coal = Ingredient("coal", "minecraft", True)
-lapislazuli = Ingredient("lapis_lazuli", "minecraft", True)
-ironingot = Ingredient("iron_ingot", "minecraft", True)
+redstone = Ingredient("minecraft:redstone", True)
+coal = Ingredient("minecraft:coal", True)
+lapislazuli = Ingredient("minecraft:lapis_lazuli", True)
+ironingot = Ingredient("minecraft:iron_ingot", True)
 
-netherrack = Ingredient("netherrack", "minecraft", True)
-netherquartz = Ingredient("nether_quartz", "minecraft", True)
+netherrack = Ingredient("minecraft:netherrack", True)
+netherquartz = Ingredient("minecraft:nether_quartz", True)
 
 # Base Ingredients (Slimefun4)
-golddust = Ingredient("gold_dust", "slimefun4", True)
+golddust = Ingredient("slimefun4:gold_dust", True)
 
-tindust = Ingredient("tin_dust", "slimefun4", True)
-tiningot = Ingredient("tin_ingot", "slimefun4", True)
+tindust = Ingredient("slimefun4:tin_dust", True)
+tiningot = Ingredient("slimefun4:tin_ingot", True)
 
-copperdust = Ingredient("copper_dust", "slimefun4", True)
-copperingot = Ingredient("copper_ingot", "slimefun4", True)
+copperdust = Ingredient("slimefun4:copper_dust", True)
+copperingot = Ingredient("slimefun4:copper_ingot", True)
 
-silverdust = Ingredient("silver_dust", "slimefun4", True)
-silveringot = Ingredient("silver_ingot", "slimefun4", True)
+silverdust = Ingredient("slimefun4:silver_dust", True)
+silveringot = Ingredient("slimefun4:silver_ingot", True)
 
-leaddust = Ingredient("lead_dust", "slimefun4", True)
-leadingot = Ingredient("lead_ingot", "slimefun4", True)
+leaddust = Ingredient("slimefun4:lead_dust", True)
+leadingot = Ingredient("slimefun4:lead_ingot", True)
 
-irondust = Ingredient("iron_dust", "slimefun4", True)
+irondust = Ingredient("slimefun4:iron_dust", True)
 
-aluminumdust = Ingredient("aluminum_dust", "slimefun4", True)
-aluminumingot = Ingredient("aluminum_ingot", "slimefun4", True)
+aluminumdust = Ingredient("slimefun4:aluminum_dust", True)
+aluminumingot = Ingredient("slimefun4:aluminum_ingot", True)
 
-stonechunk = Ingredient("stone_chunk", "slimefun4", True)
+stonechunk = Ingredient("slimefun4:stone_chunk", True)
 
 # Minecraft Recipes (Level 1)
-glass = Ingredient("glass", "minecraft", False).addRecipe([sand], 1, "furnace")
+glass = Ingredient("minecraft:glass").addRecipe([sand], 1, "minecraft:furnace")
 
 #Slimefun 4 Recipes (Level 1)
-carbon = Ingredient("carbon", "slimefun4", False).addRecipe([coal.getQty(8)], 1, "slimefun4:compressor")
+carbon = Ingredient("slimefun4:carbon").addRecipe([coal.getQty(8)], 1, "slimefun4:compressor")
 
 #Slimefun 4 Recipes (Level 2)
-compressed_carbon = Ingredient("compressed_carbon", "slimefun4", False).addRecipe([carbon.getQty(4)], 1, "slimefun4:compressor")
+compressed_carbon = Ingredient("slimefun4:compressed_carbon").addRecipe([carbon.getQty(4)], 1, "slimefun4:compressor")
 
 #Slimefun 4 Recipes (Level 3)
-carbon_chunk = Ingredient("carbon_chunk", "slimefun4", False).addShapedRecipe([compressed_carbon.getQty(8),flint], 1, "slimefun4:crafting_table", [[compressed_carbon, compressed_carbon, compressed_carbon], [compressed_carbon, flint, compressed_carbon], [compressed_carbon, compressed_carbon, compressed_carbon]])
+carbon_chunk = Ingredient("slimefun4:carbon_chunk").addShapedRecipe([compressed_carbon.getQty(8),flint], 1, [[compressed_carbon, compressed_carbon, compressed_carbon], [compressed_carbon, flint, compressed_carbon], [compressed_carbon, compressed_carbon, compressed_carbon]], "slimefun4:crafting_table")

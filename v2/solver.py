@@ -9,7 +9,7 @@ class Solver:
         self.craftablePrintHolder = {}
         self.currentTier = 0
 
-    def addSolvable(self, ingredientSolvable, qty: int):
+    def addSolvable(self, ingredientSolvable, qty: int = 1):
         for item in range(0, qty):
             self.solvables.append(ingredientSolvable)
 

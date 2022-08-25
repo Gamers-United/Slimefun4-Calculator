@@ -3,20 +3,20 @@ from globalvar import gameIngredients
 import copy
 
 class Ingredient:
-    def __init__(self, name: str, mod_name: str, is_base: bool, qty: int = 1):
+    def __init__(self, name: str, is_base: bool = False, qty: int = 1):
+        """Name in format minecraft:dirt"""
         self.name: str = name
-        self.mod_name: str = mod_name
         self.is_base: bool = is_base
         self.recipe: Optional[Recipe] = None
         self.qty = qty
         gameIngredients[self.name] = self
     
-    def addRecipe(self, ingredients: [], qty: int, process_host: str):
+    def addRecipe(self, ingredients: [], qty: int, process_host: str = "minecraft:crafting_table"):
         from recipe import Recipe
         self.recipe = Recipe(ingredients, self, qty, process_host)
         return self
     
-    def addShapedRecipe(self, ingredients: [], qty: int, process_host: str, shaped_recipe):
+    def addShapedRecipe(self, ingredients: [], qty: int, shaped_recipe, process_host: str = "minecraft:crafting_table"):
         from recipe import Recipe
         self.recipe = Recipe(ingredients, self, qty, process_host, is_shaped=True, shaped_recipe=shaped_recipe)
         return self
