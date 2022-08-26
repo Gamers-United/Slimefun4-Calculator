@@ -2,24 +2,34 @@ from ingredient import Ingredient
 from recipe import Recipe
 
 # Base Ingredients (Minecraft)
+oakLog = Ingredient("minecraft:oak_log", True)
 flint = Ingredient("minecraft:flint", True)
+cobblestone = Ingredient("minecraft:cobblestone", True)
 gravel = Ingredient("minecraft:gravel", True)
 sand = Ingredient("minecraft:sand", True)
+ice = Ingredient("minecraft:ice", True)
 
 redstone = Ingredient("minecraft:redstone", True)
 coal = Ingredient("minecraft:coal", True)
 lapislazuli = Ingredient("minecraft:lapis_lazuli", True)
+emerald = Ingredient("minecraft:emerald", True)
+diamond = Ingredient("minecraft:diamond", True)
+
 ironIngot = Ingredient("minecraft:iron_ingot", True)
 
 gunpowder = Ingredient("minecraft:gunpowder", True)
+slime = Ingredient("minecraft:slime_ball", True)
+string = Ingredient("minecraft:string", True)
 
 netherrack = Ingredient("minecraft:netherrack", True)
 netherquartz = Ingredient("minecraft:nether_quartz", True)
 netherwart = Ingredient("minecraft:nether_wart", True)
 netherstar = Ingredient("minecraft:nether_star", True)
 
-blaze_rod = Ingredient("minecraft:blaze_rod", True)
-magma_cream = Ingredient("minecraft:magma_cream", True)
+soulSand = Ingredient("minecraft:soul_sand", True)
+
+blazeRod = Ingredient("minecraft:blaze_rod", True)
+magmaCream = Ingredient("minecraft:magma_cream", True)
 
 enderpearl = Ingredient("minecraft:ender_pearl", True)
 
@@ -48,13 +58,14 @@ aluminumIngot = Ingredient("slimefun4:aluminum_ingot", True)
 
 magnesium = Ingredient("slimefun4:magnesium", True)
 
-stonechunk = Ingredient("slimefun4:stone_chunk", True)
+siftedOre = Ingredient("slimefun4:sifted_ore", True)
+stoneChunk = Ingredient("slimefun4:stone_chunk", True)
 
 basicBoard = Ingredient("slimefun4:basic_circuit_board", True)
 
-uranium_chunk = Ingredient("slimefun4:uranium_chunk", True)
+uraniumChunk = Ingredient("slimefun4:uranium_chunk", True)
 thorium = Ingredient("slimefun4:thorium", True)
-netherice = Ingredient("slimefun4:nether_ice", True)
+netherIce = Ingredient("slimefun4:nether_ice", True)    
 
 # Machine definitions
 rclick = 'minecraft:use'
@@ -70,20 +81,31 @@ grnd = 'slimefun4:grind_stone'
 mgic = 'slimefun4:magic_workbench'
 nuke = 'slimefun4:nuclear_reactor'
 wash = 'slimefun4:ore_washer'
+saw = 'slimefun4:table_saw'
 
 # Blaze Powder Grindstone Recipe or Vanilla Recipe
-#blaze_powder = Ingredient("minecraft:blaze_powder").addRecipe([blaze_rod], 2, crft)
-blaze_powder = Ingredient("minecraft:blaze_powder").addRecipe([blaze_rod], 4, grnd)
+#blaze_powder = Ingredient("minecraft:blaze_powder").addRecipe([blazeRod], 2, crft)
+blaze_powder = Ingredient("minecraft:blaze_powder").addRecipe([blazeRod], 4, grnd)
+
+# Oak Plank Sawmill and Stick Recipe or Vanilla Recipe
+#oakPlank = Ingredient("minecraft:oak_planks").addRecipe([oakLog], 4, crft)
+oakPlank = Ingredient("minecraft:oak_planks").addRecipe([oakLog], 8, saw)
+#stick = Ingredient("minecraft:stick").addRecipe([oakPlank.getQty(2)], 4, crft)
+stick = Ingredient("minecraft:stick").addRecipe([oakPlank], 4, saw)
 
 # Minecraft Recipes
 glass = Ingredient("minecraft:glass").addRecipe([sand], 1, furn)
 glassPane = Ingredient("minecraft:glass_pane").addShapedRecipe([glass.getQty(6)], 16, [[None,None,None],[glass, glass, glass],[glass, glass, glass]], crft)
-quartz_block = Ingredient("minecraft:quartz_block").addShapedRecipe([netherquartz.getQty(4)], 1, [[netherquartz,netherquartz, None],[netherquartz, netherquartz, None],[None, None, None]], crft)
-magma_block = Ingredient("minecraft:magma_block").addShapedRecipe([magma_cream.getQty(4)], 1, [[magma_cream, magma_cream, None],[magma_cream, magma_cream, None],[None, None, None]], crft)
+quartzBlock = Ingredient("minecraft:quartz_block").addShapedRecipe([netherquartz.getQty(4)], 1, [[netherquartz,netherquartz, None],[netherquartz, netherquartz, None],[None, None, None]], crft)
+magmaBlock = Ingredient("minecraft:magma_block").addShapedRecipe([magmaCream.getQty(4)], 1, [[magmaCream, magmaCream, None],[magmaCream, magmaCream, None],[None, None, None]], crft)
 endereye = Ingredient("minecraft:eye_of_ender").addRecipe([blaze_powder, enderpearl], 1, crft)
 ironBlock = Ingredient("minecraft:iron_block").addRecipe([ironIngot.getQty(9)], 1, crft)
 redstoneBlock = Ingredient("minecraft:redstone_block").addRecipe([redstone.getQty(9)], 1, crft)
 lapisBlock = Ingredient("minecraft:lapis_block").addRecipe([lapislazuli.getQty(9)], 1, crft)
+slimeBlock = Ingredient("minecraft:slime_block").addRecipe([slime.getQty(9)], 1, crft)
+craftingTable = Ingredient("minecraft:crafting_table").addRecipe([oakPlank.getQty(4)], 1, crft)
+bow = Ingredient("minecraft:bow").addRecipe([stick.getQty(3), string.getQty(3)], 1, crft)
+dispenser = Ingredient("minecraft:dispenser").addRecipe([redstone, bow, cobblestone.getQty(7)], 1, crft)
 
 # Slimefun 4 Magic Recipes
 magiclumpI = Ingredient("slimefun4:magic_lump_1").addRecipe([netherwart], 2, grnd)
@@ -106,19 +128,22 @@ gold20k = Ingredient("slimefun4:gold_20k").addRecipe([goldDust.getQty(9)], 1, sm
 gold22k = Ingredient("slimefun4:gold_22k").addRecipe([goldDust.getQty(10)], 1, smlt)
 gold24k = Ingredient("slimefun4:gold_24k").addRecipe([goldDust.getQty(11)], 1, smlt)
 gildedIron = Ingredient("slimefun4:gilded_iron").addRecipe([gold24k, ironDust], 1, smlt)
-silicon = Ingredient("slimefun4:silicon").addRecipe([quartz_block], 1, smlt)
-sulfate = Ingredient("slimefun4:sulfate").addRecipe([magma_block], 1, crsh)
+silicon = Ingredient("slimefun4:silicon").addRecipe([quartzBlock], 1, smlt)
+sulfate = Ingredient("slimefun4:sulfate").addRecipe([magmaBlock], 1, crsh)
 salt = Ingredient("slimefun4:salt").addRecipe([sand], 1, wash)
+
+# Slimefun 4 Magical Items
+commonTalisman = Ingredient("slimefun4:common_talisman").addShapedRecipe([emerald, gold8k.getQty(2), magiclumpII.getQty(4)], 1, [[magiclumpII, gold8k, magiclumpII],[None, emerald, None],[magiclumpII, gold8k, magiclumpII]], mgic)
 
 # Slimefun 4 Carbon Recipes
 carbon = Ingredient("slimefun4:carbon").addRecipe([coal.getQty(8)], 1, cmprs)
-compressedCarbon = Ingredient("slimefun4:compressedCarbon").addRecipe([carbon.getQty(4)], 1, cmprs)
-carbon_chunk = Ingredient("slimefun4:carbon_chunk").addShapedRecipe([compressedCarbon.getQty(8),flint], 1, [[compressedCarbon, compressedCarbon, compressedCarbon], [compressedCarbon, flint, compressedCarbon], [compressedCarbon, compressedCarbon, compressedCarbon]], ecrft)
-synthetic_diamond = Ingredient("slimefun4:synthetic_diamond").addRecipe([carbon_chunk], 1, pcr)
-raw_carbonado = Ingredient("slimefun4:raw_carbonado").addRecipe([synthetic_diamond,carbon_chunk, glassPane], 1, pcr)
-carbonado = Ingredient("slimefun4:carbonado").addRecipe([raw_carbonado], 1, pcr)
-synthetic_sapphire = Ingredient("slimefun4:synthetic_sapphire").addRecipe([aluminumIngot, aluminumDust, glass, glassPane, lapislazuli], 1, smlt)
-synthetic_emerald = Ingredient("slimefun4:synthetic_sapphire").addRecipe([synthetic_sapphire, aluminumIngot, aluminumDust, glassPane], 1, smlt)
+compressedCarbon = Ingredient("slimefun4:compressed_carbon").addRecipe([carbon.getQty(4)], 1, cmprs)
+carbonChunk = Ingredient("slimefun4:carbon_chunk").addShapedRecipe([compressedCarbon.getQty(8),flint], 1, [[compressedCarbon, compressedCarbon, compressedCarbon], [compressedCarbon, flint, compressedCarbon], [compressedCarbon, compressedCarbon, compressedCarbon]], ecrft)
+synthDiamond = Ingredient("slimefun4:synthetic_diamond").addRecipe([carbonChunk], 1, pcr)
+rawCarbonado = Ingredient("slimefun4:raw_carbonado").addRecipe([synthDiamond,carbonChunk, glassPane], 1, pcr)
+carbonado = Ingredient("slimefun4:carbonado").addRecipe([rawCarbonado], 1, pcr)
+synthSapphire = Ingredient("slimefun4:synthetic_sapphire").addRecipe([aluminumIngot, aluminumDust, glass, glassPane, lapislazuli], 1, smlt)
+synthEmerald = Ingredient("slimefun4:synthetic_sapphire").addRecipe([synthSapphire, aluminumIngot, aluminumDust, glassPane], 1, smlt)
 
 # Slimefun 4 Alloys
 nickelIngot = Ingredient("slimefun4:nickel_ingot").addRecipe([ironDust, ironIngot, copperDust], 1, smlt)
@@ -144,19 +169,46 @@ advancedCircuitBoard = Ingredient("slimefun4:advanced_circuit_board").addShapedR
 magnet = Ingredient("slimefun4:magnet").addRecipe([nickelIngot, cobaltIngot, aluminumDust, copperDust], 1, smlt)
 battery = Ingredient("slimefun4:battery").addShapedRecipe([redstone, zincIngot.getQty(2), copperIngot.getQty(2), sulfate.getQty(2)], 1, [[None, redstone, None],[zincIngot, sulfate, copperIngot],[zincIngot, sulfate, copperIngot]], ecrft)
 electroMagnet = Ingredient("slimefun4:electro_magnet").addShapedRecipe([nickelIngot, magnet, cobaltIngot, battery], 1, [[nickelIngot, magnet, cobaltIngot],[None, battery, None],[None, None, None]], ecrft)
-copperwire = Ingredient("slimefun4:copper_wire").addShapedRecipe([glass.getQty(6)], 8, [[None,None,None],[copperIngot, copperIngot, copperIngot],[None,None,None]], ecrft)
-electricMotor = Ingredient("slimefun4:electric_motor").addShapedRecipe([magnet, copperwire.getQty(6)], 1, [[copperwire, copperwire, copperwire],[None, electroMagnet, None],[copperwire, copperwire, copperwire]], ecrft)
-heatingCoil = Ingredient("slimefun4:heating_coil").addShapedRecipe([electricMotor, copperwire.getQty(8)], 1, [[copperwire, copperwire, copperwire],[copperwire, electroMagnet, copperwire],[copperwire, copperwire, copperwire]], ecrft)
+copperWire = Ingredient("slimefun4:copper_wire").addShapedRecipe([glass.getQty(6)], 8, [[None,None,None],[copperIngot, copperIngot, copperIngot],[None,None,None]], ecrft)
+electricMotor = Ingredient("slimefun4:electric_motor").addShapedRecipe([magnet, copperWire.getQty(6)], 1, [[copperWire, copperWire, copperWire],[None, electroMagnet, None],[copperWire, copperWire, copperWire]], ecrft)
+heatingCoil = Ingredient("slimefun4:heating_coil").addShapedRecipe([electricMotor, copperWire.getQty(8)], 1, [[copperWire, copperWire, copperWire],[copperWire, electroMagnet, copperWire],[copperWire, copperWire, copperWire]], ecrft)
+powerCrystal = Ingredient("slimefun4:power_crystal").addRecipe([synthDiamond, synthSapphire.getQty(4), redstone.getQty(4)], 1, ecrft)
+hardenedGlass = Ingredient("slimefun4:hardened_glass").addRecipe([reinforcedPlate, glass.getQty(8)], 16, ecrft)
+coolingUnit = Ingredient("slimefun4:cooling_unit").addRecipe([electricMotor, aluminumIngot.getQty(2), ice.getQty(6)], 1, ecrft)
+
+# Slimefun 4 Energy
+energyConnector = Ingredient("slimefun4:energy_connector").addRecipe([redstoneBlock, copperWire.getQty(4), carbon.getQty(4)], 8, ecrft)
+smallCap = Ingredient("slimefun4:cooling_unit").addRecipe([electricMotor, aluminumIngot.getQty(2), ice.getQty(6)], 16, ecrft)
 
 # Slimefun 4 Radioactive Recipes
-uranium = Ingredient("slimefun4:uranium").addShapedRecipe([uranium_chunk.getQty(4)], 1, [[uranium_chunk, uranium_chunk, None],[uranium_chunk, uranium_chunk, None],[None, None, None]], ecrft)
+uranium = Ingredient("slimefun4:uranium").addShapedRecipe([uraniumChunk.getQty(4)], 1, [[uraniumChunk, uraniumChunk, None],[uraniumChunk, uraniumChunk, None],[None, None, None]], ecrft)
 neptunium = Ingredient("slimefun4:neptunium").addRecipe([uranium], 1, nuke)
 plutonium  = Ingredient("slimefun4:plutonium").addRecipe([neptunium], 1, nuke)
 boostedUranium = Ingredient("slimefun4:boosted_uranium").addRecipe([plutonium, uranium], 1, hpcr)
-enrichedNetherIce = Ingredient("slimefun4:enriched_nether_ice").addRecipe([netherice, plutonium], 4, hpcr)
+enrichedNetherIce = Ingredient("slimefun4:enriched_nether_ice").addRecipe([netherIce, plutonium], 4, hpcr)
 blisteringIngot1 = Ingredient("slimefun4:blistering_ingot_1").addRecipe([uranium, gold24k], 1, hpcr)
 blisteringIngot2 = Ingredient("slimefun4:blistering_ingot_2").addRecipe([blisteringIngot1, carbonado], 1, hpcr)
 blisteringIngot3 = Ingredient("slimefun4:blistering_ingot_3").addRecipe([blisteringIngot2, netherstar], 1, hpcr)
+
+# Slimefun 4 Cargo Management
+cargoMotor = Ingredient("slimefun4:cargo_motor").addRecipe([electricMotor, silverIngot.getQty(2), electroMagnet.getQty(2), hardenedGlass.getQty(4)], 4, ecrft)
+cargoNode = Ingredient("slimefun4:cargo_node").addRecipe([cargoMotor, silverIngot.getQty(4), bronzeIngot.getQty(4)], 4, ecrft)
+craftingMotor = Ingredient("slimefun4:crafting_motor").addRecipe([cargoMotor, redstoneAlloyIngot.getQty(2), blisteringIngot3.getQty(2), craftingTable.getQty(4)], 2, ecrft)
+vanillaAutoCrafter = Ingredient("slimefun4:vanilla_auto_crafter").addRecipe([cargoMotor, craftingMotor, electricMotor, craftingTable.getQty(2)], 1, ecrft)
+enhancedAutoCrafter = Ingredient("slimefun4:enhanced_auto_crafter").addRecipe([craftingMotor, dispenser, cargoMotor, craftingTable.getQty(2)], 1, ecrft)
+
+
+#Addon Slimefun Warfare
+slimeSteel = Ingredient("slimefun4:slimesteel_ingot").addRecipe([steelIngot, slime], 1, smlt)
+reinforcedSlimeSteel = Ingredient("slimefun4:reinforced_slimesteel_ingot").addRecipe([slimeSteel, slimeBlock, damascusSteelIngot, hardenedMetal, corinthianBronzeIngot, aluminumBronzeIngot], 1, smlt)
+
+# Addon Networks
+synthEmeraldShard = Ingredient("slimefun4:ntw_synthetic_emerald_shard").addShapedRecipe([stoneChunk, synthEmerald.getQty(2)], 3, [[stoneChunk, synthEmerald, None],[synthEmerald,None,None],[None,None,None]], ecrft)
+opticGlass = Ingredient("slimefun4:ntw_optic_glass").addRecipe([synthEmeraldShard, glass.getQty(8)], 8, ecrft)
+opticCable = Ingredient("slimefun4:ntw_optic_cable").addRecipe([synthEmeraldShard, copperWire.getQty(2), opticGlass.getQty(6)], 16, ecrft)
+opticStar = Ingredient("slimefun4:ntw_optic_star").addRecipe([netherstar, opticCable.getQty(4), opticGlass.getQty(4)], 1, ecrft)
+radOpticStar = Ingredient("slimefun4:ntw_radioactice_optic_star").addRecipe([opticStar, opticCable.getQty(2), blisteringIngot3.getQty(6)], 1, ecrft)
+networkBridge = Ingredient("slimefun4:ntw_bridge").addRecipe([cargoNode, opticCable.getQty(4), opticGlass.getQty(4)], 1, ecrft)
 
 # Addon Missile Warfare
 explosivepowder = Ingredient("slimefun4:explosivepowder").addShapedRecipe([gunpowder, magnesium.getQty(4), coal.getQty(4)], 1, [[magnesium, coal, magnesium],[coal, gunpowder, coal],[magnesium, coal, magnesium]], ecrft)
