@@ -84,8 +84,8 @@ wash = 'slimefun4:ore_washer'
 saw = 'slimefun4:table_saw'
 
 # Blaze Powder Grindstone Recipe or Vanilla Recipe
-#blaze_powder = Ingredient("minecraft:blaze_powder").addRecipe([blazeRod], 2, crft)
-blaze_powder = Ingredient("minecraft:blaze_powder").addRecipe([blazeRod], 4, grnd)
+#blazePowder = Ingredient("minecraft:blaze_powder").addRecipe([blazeRod], 2, crft)
+blazePowder = Ingredient("minecraft:blaze_powder").addRecipe([blazeRod], 4, grnd)
 
 # Oak Plank Sawmill and Stick Recipe or Vanilla Recipe
 #oakPlank = Ingredient("minecraft:oak_planks").addRecipe([oakLog], 4, crft)
@@ -98,7 +98,7 @@ glass = Ingredient("minecraft:glass").addRecipe([sand], 1, furn)
 glassPane = Ingredient("minecraft:glass_pane").addShapedRecipe([glass.getQty(6)], 16, [[None,None,None],[glass, glass, glass],[glass, glass, glass]], crft)
 quartzBlock = Ingredient("minecraft:quartz_block").addShapedRecipe([netherquartz.getQty(4)], 1, [[netherquartz,netherquartz, None],[netherquartz, netherquartz, None],[None, None, None]], crft)
 magmaBlock = Ingredient("minecraft:magma_block").addShapedRecipe([magmaCream.getQty(4)], 1, [[magmaCream, magmaCream, None],[magmaCream, magmaCream, None],[None, None, None]], crft)
-endereye = Ingredient("minecraft:eye_of_ender").addRecipe([blaze_powder, enderpearl], 1, crft)
+endereye = Ingredient("minecraft:eye_of_ender").addRecipe([blazePowder, enderpearl], 1, crft)
 ironBlock = Ingredient("minecraft:iron_block").addRecipe([ironIngot.getQty(9)], 1, crft)
 redstoneBlock = Ingredient("minecraft:redstone_block").addRecipe([redstone.getQty(9)], 1, crft)
 lapisBlock = Ingredient("minecraft:lapis_block").addRecipe([lapislazuli.getQty(9)], 1, crft)
