@@ -58,7 +58,6 @@ netherice = Ingredient("slimefun4:nether_ice", True)
 
 # Machine definitions
 rclick = 'minecraft:use'
-kill = 'minecraft:attack'
 furn = 'minecraft:furnace'
 crft = 'minecraft:crafting_table'
 ecrft = 'slimefun4:enhanced_crafting_table'
@@ -82,6 +81,7 @@ glassPane = Ingredient("minecraft:glass_pane").addShapedRecipe([glass.getQty(6)]
 quartz_block = Ingredient("minecraft:quartz_block").addShapedRecipe([netherquartz.getQty(4)], 1, [[netherquartz,netherquartz, None],[netherquartz, netherquartz, None],[None, None, None]], crft)
 magma_block = Ingredient("minecraft:magma_block").addShapedRecipe([magma_cream.getQty(4)], 1, [[magma_cream, magma_cream, None],[magma_cream, magma_cream, None],[None, None, None]], crft)
 endereye = Ingredient("minecraft:eye_of_ender").addRecipe([blaze_powder, enderpearl], 1, crft)
+ironBlock = Ingredient("minecraft:iron_block").addRecipe([ironIngot.getQty(9)], 1, crft)
 redstoneBlock = Ingredient("minecraft:redstone_block").addRecipe([redstone.getQty(9)], 1, crft)
 lapisBlock = Ingredient("minecraft:lapis_block").addRecipe([lapislazuli.getQty(9)], 1, crft)
 
