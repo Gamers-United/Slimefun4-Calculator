@@ -58,6 +58,7 @@ netherice = Ingredient("slimefun4:nether_ice", True)
 
 # Machine definitions
 rclick = 'minecraft:use'
+kill = 'minecraft:attack'
 furn = 'minecraft:furnace'
 crft = 'minecraft:crafting_table'
 ecrft = 'slimefun4:enhanced_crafting_table'
