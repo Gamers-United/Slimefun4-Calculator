@@ -62,7 +62,11 @@ class Solver:
                 data[row].append(str(ui.craftablesTable.model().data(index)))
         for row in data:
             try:
-                name = row[0].lower().replace(' ','_')
+                name = row[0].lower().replace(' ','_').replace('slimefun:','slimefun4:')
+                if name.find("slimefun4:") != -1 or name.find("minecraft:") != -1:
+                    name = name
+                else:
+                    name = "slimefun4:"+name
                 iStack = gameIngredients[name]
                 self.addSolvable(iStack, int(row[1]))
             except Exception as e:
