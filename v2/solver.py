@@ -62,7 +62,7 @@ class Solver:
             data.append([item, qty])
         for row in data:
             try:
-                name = row[0].lower().replace(' ','_').replace('slimefun:','slimefun4:')
+                name = row[0].lower().replace(' ','_')
                 if name.find("slimefun4:") != -1 or name.find("minecraft:") != -1:
                     pass
                 else:
