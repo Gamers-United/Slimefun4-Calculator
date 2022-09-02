@@ -167,8 +167,8 @@ magnesiumSalt = Ingredient("slimefun4:magnesium_salt").addRecipe([magnesium, sal
 # Slimefun 4 Technical Components
 advancedCircuitBoard = Ingredient("slimefun4:advanced_circuit_board").addShapedRecipe([[lapisBlock, lapisBlock, lapisBlock],[redstoneBlock, basicBoard, redstoneBlock],[lapisBlock, lapisBlock, lapisBlock]], 1, ecrft)
 magnet = Ingredient("slimefun4:magnet").addRecipe([nickelIngot, cobaltIngot, aluminumDust, copperDust], 1, smlt)
-battery = Ingredient("slimefun4:battery").addShapedRecipe([redstone, zincIngot.getQty(2), copperIngot.getQty(2), sulfate.getQty(2)], 1, [[None, redstone, None],[zincIngot, sulfate, copperIngot],[zincIngot, sulfate, copperIngot]], ecrft)
-electroMagnet = Ingredient("slimefun4:electro_magnet").addShapedRecipe([nickelIngot, magnet, cobaltIngot, battery], 1, [[nickelIngot, magnet, cobaltIngot],[None, battery, None],[None, None, None]], ecrft)
+battery = Ingredient("slimefun4:battery").addShapedRecipe([[None, redstone, None],[zincIngot, sulfate, copperIngot],[zincIngot, sulfate, copperIngot]], 1, ecrft)
+electroMagnet = Ingredient("slimefun4:electro_magnet").addShapedRecipe([[nickelIngot, magnet, cobaltIngot],[None, battery, None],[None, None, None]], 1, ecrft)
 copperWire = Ingredient("slimefun4:copper_wire").addShapedRecipe([[None,None,None],[copperIngot, copperIngot, copperIngot],[None,None,None]], 8, ecrft)
 electricMotor = Ingredient("slimefun4:electric_motor").addShapedRecipe([[copperWire, copperWire, copperWire],[None, electroMagnet, None],[copperWire, copperWire, copperWire]], 1, ecrft)
 heatingCoil = Ingredient("slimefun4:heating_coil").addShapedRecipe([[copperWire, copperWire, copperWire],[copperWire, electroMagnet, copperWire],[copperWire, copperWire, copperWire]], 1, ecrft)
