@@ -206,7 +206,7 @@ reinforcedSlimeSteel = Ingredient("slimefun4:reinforced_slimesteel_ingot").addRe
 synthEmeraldShard = Ingredient("slimefun4:ntw_synthetic_emerald_shard").addShapedRecipe([stoneChunk, synthEmerald.getQty(2)], 3, [[stoneChunk, synthEmerald, None],[synthEmerald,None,None],[None,None,None]], ecrft)
 opticGlass = Ingredient("slimefun4:ntw_optic_glass").addRecipe([synthEmeraldShard, glass.getQty(8)], 8, ecrft)
 opticCable = Ingredient("slimefun4:ntw_optic_cable").addRecipe([synthEmeraldShard, copperWire.getQty(2), opticGlass.getQty(6)], 16, ecrft)
-opticStar = Ingredient("slimefun4:ntw_optic_star").addRecipe([netherstar, opticCable.getQty(4), opticGlass.getQty(4)], 1, ecrft)
+opticStar = Ingredient("slimefun4:ntw_optic_star").addRecipe([netherStar, opticCable.getQty(4), opticGlass.getQty(4)], 1, ecrft)
 radOpticStar = Ingredient("slimefun4:ntw_radioactice_optic_star").addRecipe([opticStar, opticCable.getQty(2), blisteringIngot3.getQty(6)], 1, ecrft)
 networkBridge = Ingredient("slimefun4:ntw_bridge").addRecipe([cargoNode, opticCable.getQty(4), opticGlass.getQty(4)], 1, ecrft)
 
