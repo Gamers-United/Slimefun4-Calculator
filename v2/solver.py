@@ -63,10 +63,6 @@ class Solver:
         for row in data:
             try:
                 name = row[0].lower().replace(' ','_')
-                if name.find("slimefun4:") != -1 or name.find("minecraft:") != -1:
-                    pass
-                else:
-                    name = "slimefun4:"+name
                 iStack = gameIngredients[name]
                 self.addSolvable(iStack.getQty(row[1]))
             except Exception as e:
