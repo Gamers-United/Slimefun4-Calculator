@@ -92,4 +92,7 @@ if __name__ == "__main__":
     a = Ui_MainWindow()
     a.setupUi(window)
     a.connectSlots()
+    a.insertButtonHandler()
+    a.craftablesTable.setItem(0, 0, QtWidgets.QTableWidgetItem("slimefun4:advanced_circuit_board"))
+    a.craftablesTable.setItem(0, 1, QtWidgets.QTableWidgetItem("32"))
     app.exec()

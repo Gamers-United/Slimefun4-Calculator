@@ -1,2 +1,3 @@
 gameRecipes = {}
 gameIngredients = {}
+game = "minecraft"

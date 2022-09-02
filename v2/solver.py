@@ -10,9 +10,8 @@ class Solver:
         self.craftablePrintHolder = {}
         self.currentTier = 0
 
-    def addSolvable(self, ingredientSolvable, qty: int = 1):
-        for item in range(0, qty):
-            self.solvables.append(ingredientSolvable)
+    def addSolvable(self, ingredientSolvable):
+        self.solvables.append(ingredientSolvable)
 
     def checkFurtherSolvable(self) -> bool:
         state = False
@@ -56,22 +55,28 @@ class Solver:
     def importUI(self, ui):
         data = []
         for row in range(ui.craftablesTable.model().rowCount()):
-            data.append([])
-            for column in range(ui.craftablesTable.model().columnCount()):
-                index = ui.craftablesTable.model().index(row, column)
-                data[row].append(str(ui.craftablesTable.model().data(index)))
+            itemindex = ui.craftablesTable.model().index(row, 0)
+            item = (str(ui.craftablesTable.model().data(itemindex)))
+            qtyindex = ui.craftablesTable.model().index(row, 1)
+            qty = (str(ui.craftablesTable.model().data(qtyindex)))
+            data.append([item, qty])
         for row in data:
             try:
                 name = row[0].lower().replace(' ','_')
                 iStack = gameIngredients[name]
-                self.addSolvable(iStack, int(row[1]))
+                self.addSolvable(iStack.getQty(row[1]))
             except Exception as e:
                 print("Ingredient in table was null or not valid.")
         self.solve()
         self.printResult()
 
+    def printSolvable(self):
+        for item in self.solvables:
+            print(str(item))
+
 if __name__ == "__main__":
     a = Solver()
-    a.addSolvable(data.carbon_chunk, 16)
+    a.addSolvable(data.carbon_chunk.getQty(16))
+    a.printSolvable()
     a.solve()
     a.printResult()
