@@ -79,7 +79,7 @@ class Solver:
 
 if __name__ == "__main__":
     a = Solver()
-    a.addSolvable(data.carbon_chunk.getQty(16))
+    a.addSolvable(data.carbonChunk.getQty(16))
     a.printSolvable()
     a.solve()
     a.printResult()
