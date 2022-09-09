@@ -1,9 +1,11 @@
 import data
 from globalvar import gameIngredients
+import plotly
 
 
 class Solver:
     def __init__(self):
+        self.sankeyRepresentation = None
         self.solvables: [] = []
         self.ingredientTiersHolder: {{}} = {}
         self.craftableTiersHolder: {[]} = {}
@@ -75,6 +77,24 @@ class Solver:
     def printSolvable(self):
         for item in self.solvables:
             print(str(item))
+
+    def generateSankey(self):
+        ingredientlabels = ""
+        recipelabels = ""
+        for i in range(0, self.currentTier):
+            for a in self.ingredientTiersHolder[i]:
+
+
+        node = {
+            "pad": 15,
+            "thickness": 20,
+            "line": {"color": "black", "width": 0.5},
+            "label": ["A1", "A2", "B1", "B2", "C1", "C2"],
+            "color": "blue",
+        }
+        self.sankeyRepresentation = plotly.graph_objs.Sankey(
+
+        )
 
 
 if __name__ == "__main__":
