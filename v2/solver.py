@@ -1,10 +1,11 @@
 import data
-from globalvar import gameIngredients
+import globalvar
 import plotly
 
 
 class Solver:
     def __init__(self):
+        self.sankeyFigure = None
         self.sankeyRepresentation = None
         self.solvables: [] = []
         self.ingredientTiersHolder: {{}} = {}
@@ -25,6 +26,7 @@ class Solver:
         return state
 
     def solve(self):
+        phase = "SOLVING"
         self.craftableTiersHolder[0] = []
         self.craftableTiersHolder[0].extend(self.solvables)
         worktodo = True
@@ -44,17 +46,7 @@ class Solver:
             self.currentTier += 1
 
     def printResult(self):
-        highest = self.currentTier
-        for i in range(0, highest):
-            print(f"----{i}----")
-            try:
-                print(f"Ingredients required by layer: {self.ingredientTiersHolder[i]}")
-            except KeyError as e:
-                print(f"No Ingredients for layer {i}")
-            try:
-                print(f"Crafts occurring in layer: {self.craftablePrintHolder[i]}")
-            except KeyError as e:
-                print(f"No Crafts for layer {i}")
+        self.__str__()
 
     def importUI(self, ui):
         uidata = []
@@ -67,39 +59,96 @@ class Solver:
         for row in uidata:
             try:
                 name = row[0].lower().replace(' ', '_')
-                iStack = gameIngredients[name]
+                if ":" not in name:
+                    name = globalvar.game + name
+                iStack = globalvar.gameIngredients[name]
                 self.addSolvable(iStack.getQty(row[1]))
             except Exception:
                 print("Ingredient in table was null or not valid.")
         self.solve()
-        self.printResult()
+        self.showSankey()
 
     def printSolvable(self):
         for item in self.solvables:
             print(str(item))
 
     def generateSankey(self):
-        ingredientlabels = ""
-        recipelabels = ""
-        for i in range(0, self.currentTier):
-            for a in self.ingredientTiersHolder[i]:
-
+        ingredients = []
+        ingredientlabels = []
+        linkSource = []
+        linkTarget = []
+        linkValue = []
+        linkdata = []
+        for t in range(0, self.currentTier):
+            for i in self.craftableTiersHolder[t]:
+                ingredients.append(i)
+        for item in ingredients:
+            ingredientlabels.append(item.name)
+        for item in ingredients:
+            for i in item.linkedInputs:
+                if item.name != i.name:
+                    linkSource.append(ingredientlabels.index(item.name))
+                    linkTarget.append(ingredientlabels.index(i.name))
+                    linkdata.append(str(item.recipe.prettyPrint()))
+                    if i.is_base:
+                        linkValue.append(i.qty)
+                    else:
+                        linkValue.append(i.factor)
 
         node = {
-            "pad": 15,
-            "thickness": 20,
-            "line": {"color": "black", "width": 0.5},
-            "label": ["A1", "A2", "B1", "B2", "C1", "C2"],
-            "color": "blue",
+            "pad": 30,
+            "thickness": 5,
+            "line": {"color": "black", "width": 0},
+            "label": ingredientlabels,
+            "color": "black",
+        }
+        link = {
+            "source": linkSource,
+            "target": linkTarget,
+            "value": linkValue,
+            "customdata": linkdata,
+            "hovertemplate": "Craft: %{source.label}<br />Recipe: %{customdata}"
         }
         self.sankeyRepresentation = plotly.graph_objs.Sankey(
-
+            node=node, link=link
         )
+
+    def generateFigure(self):
+        if self.sankeyRepresentation is None:
+            self.generateSankey()
+        self.sankeyFigure = plotly.graph_objs.Figure(data=self.sankeyRepresentation)
+        self.sankeyFigure.update_layout(title_text="Crafting Flowchart", font_size=14)
+
+    def showSankey(self):
+        if self.sankeyFigure is None:
+            self.generateFigure()
+        self.sankeyFigure.show(renderer="browser")
+
+    def writeSankey(self, file: str):
+        if self.sankeyFigure is None:
+            self.generateFigure()
+        self.sankeyFigure.write_html(file)
+
+    def __str__(self):
+        highest = self.currentTier
+        for i in range(0, highest):
+            print(f"----{i}----")
+            try:
+                print(f"Ingredients required by layer: {self.ingredientTiersHolder[i]}")
+            except KeyError as e:
+                print(f"No Ingredients for layer {i}")
+            try:
+                print(f"Crafts occurring in layer: {self.craftablePrintHolder[i]}")
+            except KeyError as e:
+                print(f"No Crafts for layer {i}")
+        return ""
+
+    def reset():
+        globalvar.phase = "SETUP"
 
 
 if __name__ == "__main__":
     a = Solver()
     a.addSolvable(data.carbonChunk.getQty(16))
-    a.printSolvable()
     a.solve()
-    a.printResult()
+    a.showSankey()

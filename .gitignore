@@ -162,3 +162,7 @@ cython_debug/
 
 #Pylance Pyright
 *pyrightconfig.json
+
+# Test images/HTML docs
+v2/test.html
+v2/test.pdf

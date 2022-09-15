@@ -3,8 +3,8 @@ from solver import Solver
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(640, 640)
+        MainWindow.setObjectName("Slimefun4 Calculator")
+        MainWindow.resize(640, 250)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.craftablesTable = QtWidgets.QTableWidget(self.centralwidget)
@@ -57,7 +57,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Slimefun4 Calculator"))
         item = self.craftablesTable.horizontalHeaderItem(0)
         item.setText(_translate("MainWindow", "Name"))
         item = self.craftablesTable.horizontalHeaderItem(1)
