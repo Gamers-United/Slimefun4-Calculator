@@ -5,7 +5,9 @@
 #  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU AGPL v3.0 for more details.
 
 from PyQt6 import QtCore, QtGui, QtWidgets
+
 from solver import Solver
+
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -80,11 +82,13 @@ class Ui_MainWindow(object):
         self.solveButton.clicked.connect(lambda x: Solver().importUI(self))
 
     def insertButtonHandler(self):
-        self.craftablesTable.insertRow(self.craftablesTable.currentRow()+1)
-        self.craftablesTable.setItem(self.craftablesTable.currentRow()+1, 1, QtWidgets.QTableWidgetItem("1"))
+        self.craftablesTable.insertRow(self.craftablesTable.currentRow() + 1)
+        self.craftablesTable.setItem(self.craftablesTable.currentRow() + 1, 1, QtWidgets.QTableWidgetItem("1"))
+
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     window = QtWidgets.QMainWindow()
     window.show()

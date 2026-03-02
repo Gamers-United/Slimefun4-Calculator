@@ -4,10 +4,11 @@
 #  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 #  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU AGPL v3.0 for more details.
 
-from typing import Optional
-import globalvar
 import copy
+from typing import Optional
+
 import exceptions
+import globalvar
 
 
 class Ingredient:

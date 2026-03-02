@@ -4,8 +4,11 @@
 #  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 #  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU AGPL v3.0 for more details.
 
-import sys, ui
+import sys
+
 from PyQt6 import QtWidgets
+
+import ui
 
 app = QtWidgets.QApplication(sys.argv)
 window = QtWidgets.QMainWindow()

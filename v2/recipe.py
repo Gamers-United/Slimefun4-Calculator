@@ -4,9 +4,10 @@
 #  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied
 #  warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU AGPL v3.0 for more details.
 
-from ingredient import Ingredient
-from globalvar import gameRecipes, phase
 import typing
+
+from globalvar import gameRecipes, phase
+from ingredient import Ingredient
 
 
 class Recipe:
@@ -55,4 +56,3 @@ class Recipe:
             return f"Pattern ({self.resolveShapedRecipe()}) in {self.process_host} makes {output_string}"
         else:
             return f"({input_string[:-2]}) in {self.process_host} makes {output_string}"
-

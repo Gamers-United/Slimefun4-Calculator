@@ -66,7 +66,8 @@ magnesium = Ingredient("slimefun4:magnesium", base=True)
 siftedOre = Ingredient("slimefun4:sifted_ore", base=True)
 stoneChunk = Ingredient("slimefun4:stone_chunk", base=True)
 
-basicBoard = Ingredient("slimefun4:basic_circuit_board", base=True).addAcquisitionDescriptor("entity_kill", "Iron Golem")
+basicBoard = Ingredient("slimefun4:basic_circuit_board", base=True).addAcquisitionDescriptor("entity_kill",
+                                                                                             "Iron Golem")
 
 uraniumChunk = Ingredient("slimefun4:uranium_chunk", base=True)
 thorium = Ingredient("slimefun4:thorium", base=True)
@@ -206,13 +207,14 @@ heatingCoil = Ingredient("slimefun4:heating_coil").addShapedRecipe(
 powerCrystal = Ingredient("slimefun4:power_crystal").addRecipe(
     [synthDiamond, synthSapphire.getQty(4), redstone.getQty(4)], ecrft)
 hardenedGlass = Ingredient("slimefun4:hardened_glass").addRecipe([reinforcedPlate, glass.getQty(8)], ecrft)
-coolingUnit = Ingredient("slimefun4:cooling_unit").addRecipe([electricMotor, aluminumIngot.getQty(2), ice.getQty(6)], ecrft)
+coolingUnit = Ingredient("slimefun4:cooling_unit").addRecipe([electricMotor, aluminumIngot.getQty(2), ice.getQty(6)],
+                                                             ecrft)
 
 # Slimefun 4 Energy
 energyConnector = Ingredient("slimefun4:energy_connector", 8).addRecipe(
     [redstoneBlock, copperWire.getQty(4), carbon.getQty(4)], ecrft)
 smallCap = Ingredient("slimefun4:cooling_unit", 16).addRecipe([electricMotor, aluminumIngot.getQty(2), ice.getQty(6)],
-                                                          ecrft)
+                                                              ecrft)
 
 # Slimefun 4 Radioactive Recipes
 uranium = Ingredient("slimefun4:uranium").addShapedRecipe(
@@ -229,7 +231,7 @@ blisteringIngot3 = Ingredient("slimefun4:blistering_ingot_3").addRecipe([blister
 cargoMotor = Ingredient("slimefun4:cargo_motor", 4).addRecipe(
     [electricMotor, silverIngot.getQty(2), electroMagnet.getQty(2), hardenedGlass.getQty(4)], ecrft)
 cargoNode = Ingredient("slimefun4:cargo_node", 4).addRecipe([cargoMotor, silverIngot.getQty(4), bronzeIngot.getQty(4)],
-                                                         ecrft)
+                                                            ecrft)
 craftingMotor = Ingredient("slimefun4:crafting_motor", 2).addRecipe(
     [cargoMotor, redstoneAlloyIngot.getQty(2), blisteringIngot3.getQty(2), craftingTable.getQty(4)], ecrft)
 vanillaAutoCrafter = Ingredient("slimefun4:vanilla_auto_crafter").addRecipe(
@@ -248,12 +250,13 @@ synthEmeraldShard = Ingredient("slimefun4:ntw_synthetic_emerald_shard", 3).addSh
 opticGlass = Ingredient("slimefun4:ntw_optic_glass", 8).addRecipe([synthEmeraldShard, glass.getQty(8)], ecrft)
 opticCable = Ingredient("slimefun4:ntw_optic_cable", 16).addRecipe(
     [synthEmeraldShard, copperWire.getQty(2), opticGlass.getQty(6)], ecrft)
-opticStar = Ingredient("slimefun4:ntw_optic_star", 1).addRecipe([netherStar, opticCable.getQty(4), opticGlass.getQty(4)],
-                                                             ecrft)
+opticStar = Ingredient("slimefun4:ntw_optic_star", 1).addRecipe(
+    [netherStar, opticCable.getQty(4), opticGlass.getQty(4)],
+    ecrft)
 radOpticStar = Ingredient("slimefun4:ntw_radioactice_optic_star", 1).addRecipe(
     [opticStar, opticCable.getQty(2), blisteringIngot3.getQty(6)], ecrft)
 networkBridge = Ingredient("slimefun4:ntw_bridge", 1).addRecipe([cargoNode, opticCable.getQty(4), opticGlass.getQty(4)],
-                                                             ecrft)
+                                                                ecrft)
 
 # Addon Missile Warfare
 explosivepowder = Ingredient("slimefun4:explosivepowder", 1).addShapedRecipe(
